@@ -2,6 +2,8 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Contact;
+use AppBundle\Manager\ContactManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -10,15 +12,29 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class ContactController extends Controller
 {
+    /** @var ContactManager */
+    protected $contactManager;
+
+    /**
+     * ContactController constructor.
+     * @param ContactManager $contactManager
+     */
+    public function __construct(ContactManager $contactManager)
+    {
+        $this->contactManager = $contactManager;
+    }
+
+    /*
+     * $contactManager = new ContactManager();
+     * $contacController = new ContactController($contactManager);
+     */
+
     /**
      * @Route("/")
      */
     public function indexAction()
     {
-        $data = [
-            ["id" => 123, "prenom" => "Jean", "nom" => "Dupont"],
-            ["id" => 456, "prenom" => "Eric", "nom" => "Martin"],
-        ];
+        $data = $this->contactManager->getAll();
 
         return $this->render('contact/index.html.twig', array(
             "contacts" => $data,
@@ -40,8 +56,10 @@ class ContactController extends Controller
      */
     public function showAction($id)
     {
+        $data = $this->contactManager->getById($id);
+
         return $this->render('contact/show.html.twig', array(
-            // ...
+            "contact" => $data,
         ));
     }
 

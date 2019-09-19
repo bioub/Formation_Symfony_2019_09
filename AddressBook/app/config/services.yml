@@ -33,3 +33,10 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+#    AppBundle\Manager\ContactManager:
+#        class: AppBundle\Manager\ContactManager
+#        arguments: []
+#
+#    AppBundle\Controller\ContactController:
+#        class: AppBundle\Controller\ContactController
+#        arguments: ["@AppBundle\\Manager\\ContactManager"]

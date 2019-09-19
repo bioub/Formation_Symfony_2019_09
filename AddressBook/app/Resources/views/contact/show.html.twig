@@ -3,5 +3,12 @@
 {% block title %}AppBundle:Contact:show{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Contact:show page</h1>
+    <h2>Afficher un contact</h2>
+
+    <p>Prénom : {{ contact.prenom }}</p>
+    <p>Nom : {{ contact.nom }}</p>
+
+    {% if contact.city %}
+    <p>Ville : {{ contact.city }}</p>
+    {% endif %}
 {% endblock %}

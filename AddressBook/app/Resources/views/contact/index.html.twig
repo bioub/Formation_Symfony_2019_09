@@ -10,7 +10,7 @@
             <tr>
                 <td>{{ c.prenom }} {{ c.nom | upper }}</td>
                 <td>
-                    <a class="btn btn-sm btn-primary" href="#">Afficher</a>
+                    <a class="btn btn-sm btn-primary" href="{{ path('app_contact_show', {'id': c.id}) }}">Afficher</a>
                     <a class="btn btn-sm btn-warning" href="#">Modifier</a>
                     <a class="btn btn-sm btn-danger" href="#">Supprimer</a>
                 </td>
