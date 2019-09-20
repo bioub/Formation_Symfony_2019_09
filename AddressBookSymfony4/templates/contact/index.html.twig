@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Liste des contacts{% endblock %}
+
+{% block body %}
+    <h2>Liste des contacts</h2>
+    <table class="table table-bordered">
+        <tbody>
+        {% for c in contacts %}
+            <tr>
+                <td>{{ c.firstName }} {{ c.lastName | upper }}</td>
+                <td>
+                    <a class="btn btn-sm btn-primary" href="#">Afficher</a>
+                    <a class="btn btn-sm btn-warning" href="#">Modifier</a>
+                    <a class="btn btn-sm btn-danger" href="#">Supprimer</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr><td>Pas de contacts</td></tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="#">Ajouter un contact</a>
+{% endblock %}
+
