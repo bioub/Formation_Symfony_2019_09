@@ -4,6 +4,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /** @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository") */
 class Contact
@@ -19,18 +20,23 @@ class Contact
     /**
      * @var string
      * @ORM\Column(name="first_name", length=40)
+     * @Assert\NotBlank()
+     * @Assert\Length(max="40", maxMessage="Le prénom ne doit pas dépasse 40 caractères")
      */
     protected $prenom;
 
     /**
      * @var string
      * @ORM\Column(name="last_name", length=40)
+     * @Assert\NotBlank(message="Le nom est obligatoire")
+     * @Assert\Length(max="40")
      */
     protected $nom;
 
     /**
      * @var string
      * @ORM\Column(length=80, nullable=true)
+     * @Assert\Length(max="80")
      */
     protected $city;
 

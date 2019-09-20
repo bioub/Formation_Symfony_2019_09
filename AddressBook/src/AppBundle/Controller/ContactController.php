@@ -2,8 +2,10 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\ContactType;
 use AppBundle\Manager\ContactManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -43,10 +45,18 @@ class ContactController extends Controller
     /**
      * @Route("/add/")
      */
-    public function createAction()
+    public function createAction(Request $request)
     {
+        $contactForm = $this->createForm(ContactType::class);
+        $contactForm->handleRequest($request);
+
+        if ($contactForm->isSubmitted() && $contactForm->isValid()) {
+            // TODO INSERER VIA DOCTRINE
+        }
+
+
         return $this->render('contact/create.html.twig', array(
-            // ...
+            'contactForm' => $contactForm->createView(),
         ));
     }
 
