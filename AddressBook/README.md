@@ -34,3 +34,14 @@ Injecter le manager societe dans SocieteController
 Développer les action, en appelant le manager et en transmettant les données aux vues
 
 Reprendre les vues et remplacer le faux-texte par les données issues du controleur
+
+## Exercice 3 : Formulaires
+
+Ajouter un formulaire pour ajouter des sociétés
+
+Créer l'action updateAction dans ContactController
+
+* updateAction doit avoir un paramètre id (comme showAction)
+* en utilisant le repository récupérer le contact à partir de l'id
+* passer ce contact au formulaire via la méthode $contactForm->setData($contact)
+* le reste est comme dans createAction...
