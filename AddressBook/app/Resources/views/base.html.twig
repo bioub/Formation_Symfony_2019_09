@@ -21,6 +21,14 @@
             </ul>
         </nav>
         <div class="container-fluid mt-3">
+            {#
+            {% for message in app.flashes('success') %}
+            <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+            #}
+
+            {{ alertSuccess() }}
+
             {% block body %}{% endblock %}
         </div>
         <hr>

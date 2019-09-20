@@ -8,7 +8,7 @@ services:
     _defaults:
         # automatically injects dependencies in your services
         autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
+        # automatically registers your services as commands, event subscribers, twig extension etc.
         autoconfigure: true
         # this means you cannot fetch services directly from the container via $container->get()
         # if you need to do this, you can override this setting on individual services
@@ -40,3 +40,9 @@ services:
 #    AppBundle\Controller\ContactController:
 #        class: AppBundle\Controller\ContactController
 #        arguments: ["@AppBundle\\Manager\\ContactManager"]
+
+#    AppBundle\Twig\Extension\AlertExtension:
+#        class: AppBundle\Twig\Extension\AlertExtension
+#        arguments: ['@session.flash_bag']
+#        tags:
+#            - twig.extension

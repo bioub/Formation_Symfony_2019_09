@@ -51,7 +51,13 @@ class ContactController extends Controller
         $contactForm->handleRequest($request);
 
         if ($contactForm->isSubmitted() && $contactForm->isValid()) {
-            // TODO INSERER VIA DOCTRINE
+            $contact = $contactForm->getData();
+            $this->contactManager->save($contact);
+
+            $this->addFlash('success', 'Le contact a bien été créé');
+
+            // return $this->redirectToRoute('app_contact_show', ['id' => $contact->getId()]);
+            return $this->redirectToRoute('app_contact_index');
         }
 
 

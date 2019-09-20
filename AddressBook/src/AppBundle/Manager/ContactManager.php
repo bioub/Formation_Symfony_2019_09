@@ -16,13 +16,22 @@ class ContactManager
         $this->doctrine = $doctrine;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $repo = $this->doctrine->getRepository(Contact::class);
         return $repo->findAll();
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $repo = $this->doctrine->getRepository(Contact::class);
         return $repo->findWithSociete($id);
+    }
+
+    public function save(Contact $entity)
+    {
+        $em = $this->doctrine->getManager();
+        $em->persist($entity);
+        $em->flush();
     }
 }
