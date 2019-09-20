@@ -21,13 +21,23 @@ class SocieteManager
         $this->doctrine = $doctrine;
     }
 
-    public function getAll() {
+    public function getAll()
+    {
         $repo = $this->doctrine->getRepository(Societe::class);
         return $repo->findBy([], null, 10);
     }
 
-    public function getById($id) {
+    public function getById($id)
+    {
         $repo = $this->doctrine->getRepository(Societe::class);
         return $repo->find($id);
     }
+
+    public function save(Societe $entity)
+    {
+        $em = $this->doctrine->getManager();
+        $em->persist($entity);
+        $em->flush();
+    }
+
 }

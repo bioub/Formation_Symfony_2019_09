@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+{% form_theme societeForm "bootstrap_4_layout.html.twig" %}
+
+{% block title %}Ajouter une société{% endblock %}
+
+{% block body %}
+    <h2>Ajouter une société</h2>
+    {{ form_start(societeForm, {'attr': {'novalidate': 'novalidate'}}) }}
+        {{ form_row(societeForm.name) }}
+        {{ form_row(societeForm.city) }}
+        <button class="btn btn-primary">Ajouter</button>
+    {{ form_end(societeForm) }}
+{% endblock %}

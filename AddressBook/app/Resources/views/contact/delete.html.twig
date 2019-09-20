@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Supprimer un contact{% endblock %}
+
+{% block body %}
+    <h2>Supprimer un contact</h2>
+    <form method="post">
+        <p>Êtes-vous sûr de vouloir supprimer {{ contact.prenom }} {{ contact.nom }} ?</p>
+        <p>
+            <button name="confirm" value="oui" class="btn btn-danger">Oui</button>
+            <button name="confirm" value="non" class="btn btn-light">Non</button>
+        </p>
+    </form>
+{% endblock %}

@@ -2,14 +2,13 @@
 
 namespace AppBundle\Form;
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ContactType extends AbstractType
+class SocieteType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -17,10 +16,8 @@ class ContactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('prenom', TextType::class, ["label" => "Prénom"])
-            ->add('nom', TextType::class, ["label" => "Nom"])
-            ->add('city', TextType::class, ["label" => "Ville"])
-            ->add('societe', null, ["label" => "Société"]);
+            ->add('name', TextType::class, ['label' => 'Nom'])
+            ->add('city', TextType::class, ['label' => 'Ville']);
     }
 
     /**
@@ -29,7 +26,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Contact'
+            'data_class' => 'AppBundle\Entity\Societe'
         ));
     }
 
@@ -38,7 +35,7 @@ class ContactType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_contact';
+        return 'appbundle_societe';
     }
 
 

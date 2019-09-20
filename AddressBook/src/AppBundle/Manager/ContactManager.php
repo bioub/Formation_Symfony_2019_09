@@ -19,6 +19,7 @@ class ContactManager
     public function getAll()
     {
         $repo = $this->doctrine->getRepository(Contact::class);
+
         return $repo->findAll();
     }
 
@@ -32,6 +33,13 @@ class ContactManager
     {
         $em = $this->doctrine->getManager();
         $em->persist($entity);
+        $em->flush();
+    }
+
+    public function remove(Contact $entity)
+    {
+        $em = $this->doctrine->getManager();
+        $em->remove($entity);
         $em->flush();
     }
 }

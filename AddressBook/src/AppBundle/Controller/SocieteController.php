@@ -2,8 +2,10 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\SocieteType;
 use AppBundle\Manager\SocieteManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -32,6 +34,30 @@ class SocieteController extends Controller
     }
 
     /**
+     * @Route("/add/")
+     */
+    public function createAction(Request $request)
+    {
+        $societeForm = $this->createForm(SocieteType::class);
+        $societeForm->handleRequest($request);
+
+        if ($societeForm->isSubmitted() && $societeForm->isValid()) {
+            $contact = $societeForm->getData();
+            $this->societeManager->save($contact);
+
+            $this->addFlash('success', 'La société a bien été créée');
+
+            // return $this->redirectToRoute('app_contact_show', ['id' => $contact->getId()]);
+            return $this->redirectToRoute('app_societe_index');
+        }
+
+
+        return $this->render('societe/create.html.twig', array(
+            'societeForm' => $societeForm->createView(),
+        ));
+    }
+
+    /**
      * @Route("/{id}/", requirements={"id": "[1-9][0-9]*"})
      */
     public function showAction($id)
@@ -46,7 +72,6 @@ class SocieteController extends Controller
             'societe' => $societe
         ));
     }
-
 
 
 }

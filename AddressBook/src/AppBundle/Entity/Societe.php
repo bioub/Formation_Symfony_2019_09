@@ -98,6 +98,7 @@ class Societe
     {
         return $this->city;
     }
+
     /**
      * Constructor
      */
@@ -138,5 +139,10 @@ class Societe
     public function getContacts()
     {
         return $this->contacts;
+    }
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

@@ -1,7 +1,7 @@
 {% extends "base.html.twig" %}
 {% form_theme contactForm "bootstrap_4_layout.html.twig" %}
 
-{% block title %}AppBundle:Contact:create{% endblock %}
+{% block title %}Ajouter un contact{% endblock %}
 
 {% block body %}
     <h2>Ajouter un contact</h2>
@@ -14,6 +14,7 @@
         </div>#}
         {{ form_row(contactForm.nom) }}
         {{ form_row(contactForm.city) }}
+        {{ form_row(contactForm.societe) }}
         <button class="btn btn-primary">Ajouter</button>
     {{ form_end(contactForm) }} {# </form> #}
 {% endblock %}

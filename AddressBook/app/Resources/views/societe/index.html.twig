@@ -1,9 +1,10 @@
 {% extends "base.html.twig" %}
 
-{% block title %}AppBundle:Societe:index{% endblock %}
+{% block title %}Liste des sociétés{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Societe:index page</h1>
+
+    <h2>Liste des sociétés</h2>
 
     <ul>
         {% for s in societes %}
@@ -12,5 +13,7 @@
         </li>
         {% endfor %}
     </ul>
+
+    <a href="{{ path('app_societe_create') }}">Ajouter une société</a>
 
 {% endblock %}
