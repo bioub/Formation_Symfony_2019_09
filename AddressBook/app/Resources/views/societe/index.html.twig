@@ -6,7 +6,11 @@
 <h1>Welcome to the Societe:index page</h1>
 
     <ul>
-        <li>Apple</li>
-        <li>Google</li>
+        {% for s in societes %}
+        <li>
+            <a href="{{ path('app_societe_show', {'id': s.id}) }}">{{ s.name }}</a>
+        </li>
+        {% endfor %}
     </ul>
+
 {% endblock %}

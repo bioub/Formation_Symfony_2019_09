@@ -3,5 +3,12 @@
 {% block title %}AppBundle:Societe:show{% endblock %}
 
 {% block body %}
-<h1>Welcome to the Societe:show page</h1>
+    <h2>Affichage d'une société</h2>
+
+    <p>Nom : {{ societe.name }}</p>
+
+    {% if societe.city %}
+    <p>Ville : {{ societe.city }}</p>
+    {% endif %}
+    
 {% endblock %}

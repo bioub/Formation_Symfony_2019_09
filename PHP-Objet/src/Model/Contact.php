@@ -53,7 +53,7 @@ class Contact
     /**
      * @return Societe
      */
-    public function getSociete(): Societe
+    public function getSociete(): ?Societe
     {
         return $this->societe;
     }
@@ -62,7 +62,7 @@ class Contact
      * @param Societe $societe
      * @return Contact
      */
-    public function setSociete(Societe $societe): Contact
+    public function setSociete(Societe $societe = null): Contact
     {
         $this->societe = $societe;
         return $this;

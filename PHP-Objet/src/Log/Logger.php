@@ -2,12 +2,11 @@
 
 namespace Cfd\Log;
 
-use Cfd\Writer\FileWriter;
 use Cfd\Writer\WriterInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
-class Logger implements LoggerInterface
+final class Logger implements LoggerInterface
 {
     use LoggerTrait;
 

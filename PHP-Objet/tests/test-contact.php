@@ -22,11 +22,13 @@ $romain->setNom('Bohdanowicz');
 $soc = new Societe();
 $soc->setNom('formation.tech');
 
-$romain->setSociete($soc);
+// $romain->setSociete($soc);
 
 // Page (Vue)
 $logger->debug('Début du rendu HTML');
 echo 'Prénom : ' . $romain->getPrenom() . "\n";
-echo 'Société : ' . $romain->getSociete()->getNom() . "\n";
+if ($romain->getSociete()) {
+    echo 'Société : ' . $romain->getSociete()->getNom() . "\n";
+}
 
 echo 'Contact (toString) : ' . $romain . "\n";

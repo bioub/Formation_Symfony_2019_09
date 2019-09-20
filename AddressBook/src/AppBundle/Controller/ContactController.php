@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Contact;
 use AppBundle\Manager\ContactManager;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
@@ -57,6 +56,10 @@ class ContactController extends Controller
     public function showAction($id)
     {
         $data = $this->contactManager->getById($id);
+
+        if (!$data) {
+            throw $this->createNotFoundException('Contact not found');
+        }
 
         return $this->render('contact/show.html.twig', array(
             "contact" => $data,

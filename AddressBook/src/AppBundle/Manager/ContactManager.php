@@ -23,6 +23,6 @@ class ContactManager
 
     public function getById($id) {
         $repo = $this->doctrine->getRepository(Contact::class);
-        return $repo->find($id);
+        return $repo->findWithSociete($id);
     }
 }

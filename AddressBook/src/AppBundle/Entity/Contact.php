@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/** @ORM\Entity() */
+/** @ORM\Entity(repositoryClass="AppBundle\Repository\ContactRepository") */
 class Contact
 {
     /**
@@ -33,6 +33,12 @@ class Contact
      * @ORM\Column(length=80, nullable=true)
      */
     protected $city;
+
+    /**
+     * @var Societe
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Societe", inversedBy="contacts")
+     */
+    protected $societe;
 
     /**
      * Set id
@@ -128,5 +134,29 @@ class Contact
     public function getCity()
     {
         return $this->city;
+    }
+
+    /**
+     * Set societe
+     *
+     * @param \AppBundle\Entity\Societe $societe
+     *
+     * @return Contact
+     */
+    public function setSociete(\AppBundle\Entity\Societe $societe = null)
+    {
+        $this->societe = $societe;
+
+        return $this;
+    }
+
+    /**
+     * Get societe
+     *
+     * @return \AppBundle\Entity\Societe
+     */
+    public function getSociete()
+    {
+        return $this->societe;
     }
 }

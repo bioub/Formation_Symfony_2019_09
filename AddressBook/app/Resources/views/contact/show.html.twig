@@ -9,6 +9,10 @@
     <p>Nom : {{ contact.nom }}</p>
 
     {% if contact.city %}
-    <p>Ville : {{ contact.city }}</p>
+        <p>Ville : {{ contact.city }}</p>
+    {% endif %}
+
+    {% if contact.societe %}
+        <p>Société : {{ contact.societe.name }}</p>
     {% endif %}
 {% endblock %}
