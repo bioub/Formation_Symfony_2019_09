@@ -2,18 +2,25 @@
 
 namespace Cfd\Log;
 
+use Cfd\Writer\FileWriter;
+use Cfd\Writer\WriterInterface;
 use Psr\Log\LoggerInterface;
 use Psr\Log\LoggerTrait;
 
-class FileLogger implements LoggerInterface
+class Logger implements LoggerInterface
 {
     use LoggerTrait;
 
-    protected $fic;
+    /** @var WriterInterface */
+    protected $writer;
 
-    public function __construct(string $filePath)
+    /**
+     * Logger constructor.
+     * @param WriterInterface $writer
+     */
+    public function __construct(WriterInterface $writer)
     {
-        $this->fic = fopen($filePath, 'a');
+        $this->writer = $writer;
     }
 
 
@@ -29,6 +36,6 @@ class FileLogger implements LoggerInterface
     public function log($level, $message, array $context = array())
     {
         $line = "[$level] $message\n"; // [debug] Début du rendu
-        fwrite($this->fic, $line);
+        $this->writer->write($line);
     }
 }

@@ -2,6 +2,9 @@
 
 namespace Cfd\Model;
 
+use Cfd\Log\Logger;
+use Psr\Log\LoggerInterface;
+
 class Contact
 {
     /** @var string */
@@ -10,6 +13,7 @@ class Contact
     protected $nom;
     /** @var Societe */
     protected $societe;
+
     /**
      * @return string
      */
